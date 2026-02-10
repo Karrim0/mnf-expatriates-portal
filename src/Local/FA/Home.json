@@ -1,0 +1,71 @@
+{
+  "header": {
+    "home": "خانه",
+    "MNF Uni": "دانشگاه MNF",
+    "Colleges": "دانشکده‌ها",
+    "Programs": "برنامه‌ها",
+    "News": "اخبار",
+    "contact US": "تماس با ما",
+    "Arabic": "عربی",
+    "English": "انگلیسی",
+    "Spanish": "اسپانیایی",
+    "code": "FA",
+    "More News": "اخبار بیشتر"
+  },
+  "hero": {
+    "title": "به دانشگاه MNF برای دانشجویان بین‌المللی خوش آمدید"
+  },
+  "about": {
+    "title": "دفتر امور دانشجویان بین‌المللی",
+    "subtitle": "ارائه حمایت به دانشجویان بین‌المللی در زمینه ثبت‌نام، ویزا و ادغام فرهنگی برای تضمین انتقال آسان و سفر تحصیلی لذت‌بخش در دانشگاه MNF."
+  },
+  "footer": {
+    "keyInformation": "اطلاعات کلیدی",
+    "latestDecisions": "آخرین تصمیمات",
+    "conditionsTransfers": "شرایط انتقال",
+    "administrativeDirectives": "دستورالعمل‌های اداری",
+    "financialTransferControls": "کنترل‌های انتقال مالی",
+    "quarterlyExamResults": "نتایج امتحانات فصلی",
+    "generalGuidelines": "راهنمای کلی",
+    "paperServices": "خدمات کاغذی",
+    "stoppingRegistration": "توقف ثبت‌نام و مسدود کردن حساب‌ها",
+    "importantLinks": "پیوندهای مهم",
+    "importantLatestDecisions": "پورتال دانشگاه‌های مصر",
+    "importantConditionsTransfers": "مرکز ملی یادگیری الکترونیکی",
+    "importantAdministrativeDirectives": "پورتال دولت مصر",
+    "importantFinancialTransferControls": "پورتال استانداری منوفیه",
+    "importantQuarterlyExamResults": "صندوق توسعه علم و فناوری",
+    "importantGeneralGuidelines": "کنسرسیوم کتابخانه دانشگاه‌های مصر",
+    "importantPaperServices": "اتحادیه دانشگاه‌های عرب",
+    "importantStoppingRegistration": "شورای عالی دانشگاه‌ها",
+    "MinistryofHigherEducation": "وزارت آموزش عالی",
+    "NationalAuthorityforQualityAssuranceandAccreditation": "مرجع ملی تضمین کیفیت و اعتبارسنجی",
+    "serviceGuide": "راهنمای خدمات",
+    "serviceGuideLatestDecisions": "پذیرش و درخواست دانشگاه",
+    "serviceGuideConditionsTransfers": "شهریه و هماهنگی تحصیل",
+    "serviceGuideAdministrativeDirectives": "راهنمای دانشجوی بین‌المللی و برنامه‌های تحصیلی",
+    "serviceGuideFinancialTransferControls": "ارتباطات و موقعیت",
+    "serviceGuideQuarterlyExamResults": "اقامت و اسکان",
+    "serviceGuideGeneralGuidelines": "تحصیل در مصر",
+    "serviceGuidePaperServices": "مراقبت‌های پزشکی",
+    "serviceGuideStoppingRegistration": "مجوزهای اقامت و گذرنامه",
+    "serviceReview": "باشگاه اجتماعی و ورزشی",
+    "EntertainmentCorner": "گوشه سرگرمی",
+    "Evaluationcomplaintsandsuggestions": "ارزیابی و پیشنهادات",
+    "performanceEvaluation": "ارزیابی عملکرد",
+    "generalComplaints": "شکایات عمومی",
+    "sendSuggestions": "پیشنهادات خود را ارسال کنید",
+    "copyrights": "تمام حقوق برای دانشگاه منوفیه محفوظ است"
+  },
+  "details": {
+    "latest": "آخرین اخبار",
+    "page": "تعداد صفحات",
+    "of": "از",
+    "searchPlaceholder": "آخرین اخباری که برای شما مهم است را جستجو کنید",
+    "search": "جستجو",
+    "noResultsFound": "نتیجه‌ای یافت نشد"
+  },
+  "tooltip": {
+    "details": "برای مشاهده جزئیات کلیک کنید"
+  }
+}

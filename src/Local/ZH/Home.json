@@ -1,0 +1,71 @@
+{
+  "header": {
+    "home": "主页",
+    "MNF Uni": "MNF大学",
+    "Colleges": "学院",
+    "Programs": "专业",
+    "News": "新闻",
+    "contact US": "联系我们",
+    "Arabic": "阿拉伯语",
+    "English": "英语",
+    "Spanish": "西班牙语",
+    "code": "ZH",
+    "More News": "更多新闻"
+  },
+  "hero": {
+    "title": "欢迎来到MNF大学国际学生部"
+  },
+  "about": {
+    "title": "国际学生事务办公室",
+    "subtitle": "为国际学生提供注册、签证和文化融合方面的支持，确保在MNF大学顺利过渡和愉快的学术之旅。"
+  },
+  "footer": {
+    "keyInformation": "重要信息",
+    "latestDecisions": "最新决定",
+    "conditionsTransfers": "转学条件",
+    "administrativeDirectives": "行政指令",
+    "financialTransferControls": "财务转账控制",
+    "quarterlyExamResults": "季度考试结果",
+    "generalGuidelines": "一般指导",
+    "paperServices": "纸质服务",
+    "stoppingRegistration": "停止注册和冻结账户",
+    "importantLinks": "重要链接",
+    "importantLatestDecisions": "埃及大学门户",
+    "importantConditionsTransfers": "国家电子学习中心",
+    "importantAdministrativeDirectives": "埃及政府门户",
+    "importantFinancialTransferControls": "穆努菲亚省门户",
+    "importantQuarterlyExamResults": "科学技术发展基金",
+    "importantGeneralGuidelines": "埃及大学图书馆联盟",
+    "importantPaperServices": "阿拉伯大学联盟",
+    "importantStoppingRegistration": "大学最高委员会",
+    "MinistryofHigherEducation": "高等教育部",
+    "NationalAuthorityforQualityAssuranceandAccreditation": "国家质量保证和认证机构",
+    "serviceGuide": "服务指南",
+    "serviceGuideLatestDecisions": "大学录取和申请",
+    "serviceGuideConditionsTransfers": "学费和学习协调",
+    "serviceGuideAdministrativeDirectives": "国际学生指南和学习项目",
+    "serviceGuideFinancialTransferControls": "通讯和位置",
+    "serviceGuideQuarterlyExamResults": "居住和住宿",
+    "serviceGuideGeneralGuidelines": "在埃及学习",
+    "serviceGuidePaperServices": "医疗保健",
+    "serviceGuideStoppingRegistration": "居住许可和护照",
+    "serviceReview": "社交和体育俱乐部",
+    "EntertainmentCorner": "娱乐角",
+    "Evaluationcomplaintsandsuggestions": "评估和建议",
+    "performanceEvaluation": "绩效评估",
+    "generalComplaints": "一般投诉",
+    "sendSuggestions": "发送您的建议",
+    "copyrights": "版权归穆努菲亚大学所有"
+  },
+  "details": {
+    "latest": "最新消息",
+    "page": "页数",
+    "of": "共",
+    "searchPlaceholder": "搜索您关心的最新消息",
+    "search": "搜索",
+    "noResultsFound": "未找到结果"
+  },
+  "tooltip": {
+    "details": "点击查看详情"
+  }
+}

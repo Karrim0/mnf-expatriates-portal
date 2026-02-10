@@ -1,0 +1,419 @@
+.news-page {
+  margin: 10px 48px;
+  padding: 16px;
+}
+
+.News-header {
+  background-color: #e9e9e9;
+  color: #001351;
+  font-family: var(--MNF_Heading_EN);
+  font-size: 40px;
+  font-weight: 800;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  padding: 10px;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.pagination .page-btn {
+  background-color: #f3f4f6;
+  outline: none;
+  border: 2px solid #dddddd;
+  color: black;
+  padding: 10px;
+  cursor: pointer;
+  width: 80px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--MNF_Body_EN);
+  font-weight: 700;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.pagination .page-btn.left {
+  border-radius: 10px 0 0 10px;
+}
+
+.pagination .page-btn.leftar {
+  border-radius: 0 10px 10px 0;
+}
+
+.pagination .page-btn.right {
+  border-radius: 0 10px 10px 0;
+}
+
+.pagination .page-btn.rightar {
+  border-radius: 10px 0 0 10px;
+}
+
+.pagination .page-btn.right:hover,
+.pagination .page-btn.left:hover {
+  background-color: #f66b15;
+  color: white;
+  border: none;
+}
+
+.pagination .page-btn.left:disabled,
+.pagination .page-btn.right:disabled {
+  background-color: #f3f4f6;
+  color: rgb(136, 136, 136);
+  border: 2px solid #dddddd;
+  cursor: not-allowed;
+}
+
+.pagination .page-btn.number {
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  margin: 0px 4px;
+  background-color: white;
+  color: black;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.pagination .page-btn.number:hover,
+.pagination .page-btn.number.active {
+  background-color: #000820;
+  color: white;
+  border: none;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  background-color: #000820da;
+  color: white;
+  border: 2px solid #f7f7f7;
+  padding: 9px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.pagination-controls button:hover {
+  background-color: #000820;
+  border-color: #f7f7f7;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-controls span {
+  font-size: 16px;
+  color: #333;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform-origin: center;
+  transition: transform 10s;
+}
+
+.hero-image:hover {
+  transform: scale(1.1);
+}
+
+.hero-overlay {
+  position: absolute;
+  border-radius: 10px;
+  background-color: #0008208c !important;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #fff;
+  position: absolute;
+
+  z-index: 55555444455 !important;
+}
+
+.card-not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.card-not-found h2 {
+  font-size: 28px;
+  color: #001351;
+  font-weight: bold;
+}
+
+.searchCard {
+  background-color: #ffffff1a;
+  position: absolute;
+  width: 80%;
+  transform: translateY(45%);
+  inset-inline-start: 10%;
+  box-shadow: 0px 4px 32px 0px #00000026;
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.searchCard .inputSerch {
+  width: 70%;
+  flex-grow: 4;
+  padding: 10px;
+}
+.heroSlider{
+      position: relative;
+    margin: 16px 64px 80px;
+    border-radius: 10px;
+    height: 250px;
+}
+
+.searchCard .inputSerch input {
+  width: 100%;
+  flex-grow: 4;
+  padding: 10px;
+  height: 50px;
+  gap: 8px;
+  padding-top: 9px;
+  padding-right: 16px;
+  padding-bottom: 9px;
+  padding-left: 16px;
+  border-radius: 6px;
+  background: #f6f6f6;
+  border: none;
+  outline: none;
+}
+
+.btnSearch i {
+  margin: 0 10px;
+}
+
+.btnSearch button {
+  width: 160px;
+  height: 50px;
+  gap: 12px;
+  padding-top: 2px;
+  padding-right: 20px;
+  padding-bottom: 2px;
+  padding-left: 20px;
+  border-radius: 6px;
+  background: #001351;
+  color: #fff;
+}
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.pagination-btn {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #e0e0e0;
+}
+
+.pagination-btn:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination-btn.active {
+  background-color: #0013516b;
+  color: white;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 5px;
+}
+.pagainationDown{
+  display: flex;
+  justify-content:space-between ;
+  margin: 0 50px ;
+}
+.pageSearch{
+  padding: 5px 20px;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+      background-color: #000820da;
+    inset-inline-start: 10%;
+    border-radius: 12px;
+
+}
+.pageSearch .inputPage{
+
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+
+  
+}
+.pageSearch .btnPage{
+white-space: nowrap;
+color: #001351;
+  padding: 10px;
+background-color: #fff;
+border-radius: 5px;
+  border: none;
+
+}
+.pages{
+  white-space: nowrap;
+  color: #fff;
+  font-size: 18px;
+  font-family: var(--MNF_Body_EN);
+
+}
+.pages span{
+    font-weight: 800;
+}
+@media (max-width: 930px) {
+  .news-page {
+    margin: 10px 36px;
+    padding: 14px;
+  }
+
+  .searchCard {
+    width: 90%;
+    transform: translateY(45%);
+    bottom: 25%;
+    inset-inline-start: 30px;
+    box-shadow: 0px 4px 32px 0px #00000026;
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .news-page {
+    margin: 10px 24px;
+    padding: 8px;
+  }
+
+  .News-header {
+    font-size: 30px;
+  }
+
+  .searchCard {
+    width: 90%;
+    inset-inline-start: 25px;
+  }
+  .heroSlider {
+    margin: 20px;
+  }
+}
+@media (max-width: 700px) {
+  .news-page {
+    margin: 10px 5px;
+    padding: 5px;
+  }
+  .searchCard {
+    padding: 20px;
+    gap: 0px;
+  }
+  .pagainationDown{
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+   flex-wrap: wrap;
+   gap: 20px;
+}
+}
+@media (max-width: 550px) {
+  .news-page {
+    margin: 10px 5px;
+    padding: 5px;
+  }
+  .searchCard {
+    padding: 20px;
+    gap: 10px;
+
+  }
+  .btnSearch button{
+    width:fit-content ;
+    padding: 10px !important;
+  }
+  .Btntext{
+    display: none;
+  }
+
+}
+@media (max-width: 480px) {
+  .News-header {
+    font-size: 25px;
+  }
+}
+@media (max-width: 390px) {
+      .searchCard {
+        padding: 9px;
+        gap: 10px;
+    }
+}
+
+.add-news-btn {
+  display: inline-block;
+  background-color: #F66B15;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--MNF_Body_EN);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-news-btn:hover {
+  background-color: #d95c0f;
+}

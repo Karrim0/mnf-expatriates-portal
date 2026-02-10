@@ -1,0 +1,25 @@
+{
+    "contact-us": "お問い合わせ",
+    "contact-desc": "お問い合わせやご質問にお答えいたします。",
+    "suggestions": "ご提案",
+    "suggestions-desc": "サービス向上のためのご提案をお待ちしています。",
+    "complaints": "苦情",
+    "complaints-desc": "ご不便をおかけし申し訳ございません。状況をお聞かせください。",
+    "ratings": "評価",
+    "ratings-desc": "ご経験をお聞かせください",
+    "rating": "評価",
+    "email": "メールアドレス",
+    "email-placeholder": "メールアドレスを入力",
+    "message": "メッセージ",
+    "message-placeholder-suggestions": "ご提案をこちらにご記入ください...",
+    "message-placeholder-complaints": "詳細な状況をご説明ください...",
+    "message-placeholder-ratings": "ご経験についてお聞かせください...",
+    "submit": "送信",
+    "sending": "送信中...",
+    "phone": "電話番号",
+    "address": "住所",
+    "suggestions-done": "ご提案ありがとうございました。",
+    "complaints-done": "ご報告ありがとうございます。追ってご連絡させていただきます。",
+    "ratings-done": "評価のご送信ありがとうございました。"
+  }
+  

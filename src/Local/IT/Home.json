@@ -1,0 +1,70 @@
+{
+  "header": {
+    "home": "Home",
+    "MNF Uni": "Università MNF",
+    "Colleges": "Facoltà",
+    "Programs": "Programmi",
+    "News": "Notizie",
+    "contact US": "Contattaci",
+    "Arabic": "Arabo",
+    "English": "Inglese",
+    "Spanish": "Spagnolo",
+    "code": "IT",
+    "More News": "Altre notizie"
+  },  "hero": {
+    "title": "Benvenuti all'Università MNF per Studenti Internazionali"
+  },
+  "about": {
+    "title": "Ufficio Affari Studenti Internazionali",
+    "subtitle": "Forniamo supporto agli studenti internazionali per iscrizione, visti e integrazione culturale per garantire una transizione agevole e un percorso accademico piacevole all'Università MNF."
+  },
+  "footer": {
+    "keyInformation": "Key Information",
+    "latestDecisions": "Latest Decisions",
+    "conditionsTransfers": "Conditions of Transfers",
+    "administrativeDirectives": "Administrative Directives",
+    "financialTransferControls": "Financial Transfer Controls",
+    "quarterlyExamResults": "Quarterly Exam Results",
+    "generalGuidelines": "General Guidelines",
+    "paperServices": "Paper Services",
+    "stoppingRegistration": "Stopping Registration & Freezing Accounts",
+    "importantLinks": "Important Links",
+    "importantLatestDecisions": "Egyptian Universities Portal",
+    "importantConditionsTransfers": "National Center for E-Learning",
+    "importantAdministrativeDirectives": "Egyptian Government Portal",
+    "importantFinancialTransferControls": "Monufia Governorate Portal",
+    "importantQuarterlyExamResults": "Science and Technology Development Fund",
+    "importantGeneralGuidelines": "Egyptian Universities Library Consortium",
+    "importantPaperServices": "Association of Arab Universities",
+    "importantStoppingRegistration": "Supreme Council of Universities",
+    "MinistryofHigherEducation": "Ministry of Higher Education",
+    "NationalAuthorityforQualityAssuranceandAccreditation": "National Authority for Quality Assurance and Accreditation",
+    "serviceGuide": "Service Guide",
+    "serviceGuideLatestDecisions": "University Admission and Application",
+    "serviceGuideConditionsTransfers": "Tuition Fees and Study Coordination",
+    "serviceGuideAdministrativeDirectives": "International Student Guide & Study Programs",
+    "serviceGuideFinancialTransferControls": "Communications & Location",
+    "serviceGuideQuarterlyExamResults": "Residence & Accommodation",
+    "serviceGuideGeneralGuidelines": "Studying in Egypt",
+    "serviceGuidePaperServices": "Medical Care",
+    "serviceGuideStoppingRegistration": "Residence Permits & Passports",
+    "serviceReview": "Social & Sports Club",
+    "EntertainmentCorner": "Entertainment Corner",
+    "Evaluationcomplaintsandsuggestions": "Evaluation and Suggestions",
+    "performanceEvaluation": "Performance Evaluation",
+    "generalComplaints": "General Complaints",
+    "sendSuggestions": "Send Your Suggestions",
+    "copyrights": "All rights reserved to Menoufia University"
+  },
+  "details": {
+    "latest": "Latest news",
+    "page": "Number Pages",
+    "of": "of",
+    "searchPlaceholder": "Search for the latest news that matters to you",
+    "search": "Search",
+    "noResultsFound": "No results found"
+  },
+    "tooltip": {
+    "details": "Click to view details"
+  }
+}

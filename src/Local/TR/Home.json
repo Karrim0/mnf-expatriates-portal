@@ -1,0 +1,71 @@
+{
+  "header": {
+    "home": "Ana Sayfa",
+    "MNF Uni": "MNF Üniversitesi",
+    "Colleges": "Fakülteler",
+    "Programs": "Programlar",
+    "News": "Haberler",
+    "contact US": "İletişim",
+    "Arabic": "Arapça",
+    "English": "İngilizce",
+    "Spanish": "İspanyolca",
+    "code": "TR",
+    "More News": "Daha Fazla Haber"
+  },
+  "hero": {
+    "title": "Uluslararası Öğrenciler için MNF Üniversitesi'ne Hoş Geldiniz"
+  },
+  "about": {
+    "title": "Uluslararası Öğrenci İşleri Ofisi",
+    "subtitle": "MNF Üniversitesi'nde sorunsuz bir geçiş ve keyifli bir akademik yolculuk sağlamak için uluslararası öğrencilere kayıt, vize ve kültürel entegrasyon konularında destek sağlıyoruz."
+  },
+  "footer": {
+    "keyInformation": "Temel Bilgiler",
+    "latestDecisions": "Son Kararlar",
+    "conditionsTransfers": "Transfer Koşulları",
+    "administrativeDirectives": "İdari Direktifler",
+    "financialTransferControls": "Mali Transfer Kontrolleri",
+    "quarterlyExamResults": "Üç Aylık Sınav Sonuçları",
+    "generalGuidelines": "Genel Kılavuzlar",
+    "paperServices": "Kağıt Hizmetleri",
+    "stoppingRegistration": "Kaydı Durdurma ve Hesapları Dondurma",
+    "importantLinks": "Önemli Bağlantılar",
+    "importantLatestDecisions": "Mısır Üniversiteleri Portalı",
+    "importantConditionsTransfers": "Ulusal E-Öğrenme Merkezi",
+    "importantAdministrativeDirectives": "Mısır Hükümeti Portalı",
+    "importantFinancialTransferControls": "Monufia Valiliği Portalı",
+    "importantQuarterlyExamResults": "Bilim ve Teknoloji Geliştirme Fonu",
+    "importantGeneralGuidelines": "Mısır Üniversiteleri Kütüphane Konsorsiyumu",
+    "importantPaperServices": "Arap Üniversiteleri Birliği",
+    "importantStoppingRegistration": "Üniversiteler Yüksek Konseyi",
+    "MinistryofHigherEducation": "Yükseköğretim Bakanlığı",
+    "NationalAuthorityforQualityAssuranceandAccreditation": "Kalite Güvencesi ve Akreditasyon Ulusal Otoritesi",
+    "serviceGuide": "Hizmet Kılavuzu",
+    "serviceGuideLatestDecisions": "Üniversite Kabul ve Başvuru",
+    "serviceGuideConditionsTransfers": "Öğrenim Ücretleri ve Çalışma Koordinasyonu",
+    "serviceGuideAdministrativeDirectives": "Uluslararası Öğrenci Kılavuzu ve Çalışma Programları",
+    "serviceGuideFinancialTransferControls": "İletişim ve Konum",
+    "serviceGuideQuarterlyExamResults": "İkamet ve Konaklama",
+    "serviceGuideGeneralGuidelines": "Mısır'da Eğitim",
+    "serviceGuidePaperServices": "Tıbbi Bakım",
+    "serviceGuideStoppingRegistration": "İkamet İzinleri ve Pasaportlar",
+    "serviceReview": "Sosyal ve Spor Kulübü",
+    "EntertainmentCorner": "Eğlence Köşesi",
+    "Evaluationcomplaintsandsuggestions": "Değerlendirme ve Öneriler",
+    "performanceEvaluation": "Performans Değerlendirmesi",
+    "generalComplaints": "Genel Şikayetler",
+    "sendSuggestions": "Önerilerinizi Gönderin",
+    "copyrights": "Tüm hakları Menoufia Üniversitesi'ne aittir"
+  },
+  "details": {
+    "latest": "Son haberler",
+    "page": "Sayfa Sayısı",
+    "of": "of",
+    "searchPlaceholder": "Size önemli olan son haberleri arayın",
+    "search": "Ara",
+    "noResultsFound": "Sonuç bulunamadı"
+  },
+  "tooltip": {
+    "details": "Detayları görmek için tıklayın"
+  }
+}

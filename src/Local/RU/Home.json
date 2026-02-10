@@ -1,0 +1,71 @@
+{
+  "header": {
+    "home": "Главная",
+    "MNF Uni": "Университет МНФ",
+    "Colleges": "Колледжи",
+    "Programs": "Программы",
+    "News": "Новости",
+    "contact US": "Связаться с нами",
+    "Arabic": "Арабский",
+    "English": "Английский",
+    "Spanish": "Испанский",
+    "code": "RU",
+    "More News": "Больше новостей"
+  },
+  "hero": {
+    "title": "Добро пожаловать в Университет МНФ для международных студентов"
+  },
+  "about": {
+    "title": "Офис по делам международных студентов",
+    "subtitle": "Предоставление поддержки международным студентам в вопросах регистрации, виз и культурной интеграции для обеспечения плавного перехода и приятного академического путешествия в Университете МНФ."
+  },
+  "footer": {
+    "keyInformation": "Ключевая информация",
+    "latestDecisions": "Последние решения",
+    "conditionsTransfers": "Условия переводов",
+    "administrativeDirectives": "Административные директивы",
+    "financialTransferControls": "Контроль финансовых переводов",
+    "quarterlyExamResults": "Результаты квартальных экзаменов",
+    "generalGuidelines": "Общие рекомендации",
+    "paperServices": "Бумажные услуги",
+    "stoppingRegistration": "Остановка регистрации и заморозка счетов",
+    "importantLinks": "Важные ссылки",
+    "importantLatestDecisions": "Портал египетских университетов",
+    "importantConditionsTransfers": "Национальный центр электронного обучения",
+    "importantAdministrativeDirectives": "Портал правительства Египта",
+    "importantFinancialTransferControls": "Портал губернаторства Монуфия",
+    "importantQuarterlyExamResults": "Фонд развития науки и технологий",
+    "importantGeneralGuidelines": "Консорциум библиотек египетских университетов",
+    "importantPaperServices": "Ассоциация арабских университетов",
+    "importantStoppingRegistration": "Высший совет университетов",
+    "MinistryofHigherEducation": "Министерство высшего образования",
+    "NationalAuthorityforQualityAssuranceandAccreditation": "Национальное агентство по обеспечению качества и аккредитации",
+    "serviceGuide": "Руководство по услугам",
+    "serviceGuideLatestDecisions": "Поступление в университет и подача заявлений",
+    "serviceGuideConditionsTransfers": "Плата за обучение и координация учебы",
+    "serviceGuideAdministrativeDirectives": "Руководство для международных студентов и учебные программы",
+    "serviceGuideFinancialTransferControls": "Связь и расположение",
+    "serviceGuideQuarterlyExamResults": "Проживание и размещение",
+    "serviceGuideGeneralGuidelines": "Обучение в Египте",
+    "serviceGuidePaperServices": "Медицинское обслуживание",
+    "serviceGuideStoppingRegistration": "Разрешения на проживание и паспорта",
+    "serviceReview": "Социальный и спортивный клуб",
+    "EntertainmentCorner": "Развлекательный уголок",
+    "Evaluationcomplaintsandsuggestions": "Оценка и предложения",
+    "performanceEvaluation": "Оценка производительности",
+    "generalComplaints": "Общие жалобы",
+    "sendSuggestions": "Отправить ваши предложения",
+    "copyrights": "Все права принадлежат Университету Монуфия"
+  },
+  "details": {
+    "latest": "Последние новости",
+    "page": "Количество страниц",
+    "of": "из",
+    "searchPlaceholder": "Ищите последние новости, которые вас интересуют",
+    "search": "Поиск",
+    "noResultsFound": "Результаты не найдены"
+  },
+  "tooltip": {
+    "details": "Нажмите, чтобы просмотреть детали"
+  }
+}

@@ -1,44 +1,72 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import SectionOne from "./SectionOne/SectionOne";
-import Header from "../HomePage/Header/Header";
-import Footer from "../HomePage/Footer/Footer";
-import "./News.css";
-import "./SectionTow/SectionTow.css";
-import api from "../Services/api";
+import { Link, useNavigate } from "react-router-dom";
+import { Edit, Trash2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 import ReactTooltip from "react-tooltip";
+import { useAuth } from "../hooks/useAuth";
+import api from "../Services/api";
+import DeleteConfirmModal from "../components/DeleteConfirmModal";
+import "./News.css";
 
 const ITEMS_PER_PAGE = 10;
 
+const SmartImage = ({ src, alt = "", className = "", style = {} }) => {
+  const [imageSrc, setImageSrc] = useState("/src/assets/raes.jpg");
+
+  useEffect(() => {
+    if (!src) return;
+    const img = new Image();
+    img.src = src;
+    img.onload = () => setImageSrc(src);
+  }, [src]);
+
+  return <img src={imageSrc} alt={alt} className={className} style={style} />;
+};
+
 interface NewsItem {
   id: number;
-  // Add other properties of news item here
+  newsImg: string;
+  newsDetails: {
+    head: string;
+    abbr: string;
+  };
+  date: string;
   [key: string]: any;
 }
 
 function News() {
   const savedLang = JSON.parse(localStorage.getItem("lang") || "{}");
-  const { t } = useTranslation();
-  const [inputPage, setInputPage] = useState("");
+  const { t } = useTranslation("News");
+  const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [filteredNews, setFilteredNews] = useState<any[]>([]);
+  const [filteredNews, setFilteredNews] = useState<NewsItem[]>([]);
   const [langId, setLangId] = useState(savedLang?.id || 2);
   const [totalPages, setTotalPages] = useState(0);
   const [moveNext, setMoveNext] = useState(false);
   const [movePrevious, setMovePrevious] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-  const isLoggedIn = Boolean(localStorage.getItem("token"));
+
+  const [deleteModal, setDeleteModal] = useState({
+    isOpen: false,
+    newsId: null as number | null,
+    newsTitle: "",
+    isLoading: false,
+  });
 
   const isArabic = savedLang?.code === "ar";
-  const pStyle = {
-    fontFamily: isArabic ? "var(--MNF_Body_AR)" : "var(--MNF_Body_EN)",
-  };
-  const headStyle = {
-    fontFamily: isArabic ? "var(--MNF_Heading_AR)" : "var(--MNF_Heading_EN)",
+
+  const formatDate = (rawDate: string) => {
+    const date = new Date(rawDate);
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    };
+    return date.toLocaleDateString(isArabic ? "ar-EG" : "en-US", options);
   };
 
   const fetchNews = (page = 1, term = "") => {
@@ -72,10 +100,72 @@ function News() {
     fetchNews(1, searchTerm);
   };
 
-  const handlePageChange = (page: any) => {
-    if (page >= 1 && page <= totalPages && page !== currentPage) {
-      setCurrentPage(page);
+  const handleDeleteClick = (e: React.MouseEvent, news: NewsItem) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDeleteModal({
+      isOpen: true,
+      newsId: news.id,
+      newsTitle: news.newsDetails.head,
+      isLoading: false,
+    });
+  };
+
+  const handleEditClick = (e: React.MouseEvent, news: NewsItem) => {
+    e.preventDefault();
+    e.stopPropagation();
+    window.open(`/news/edit/${news.id}`, "_blank");
+  };
+
+  const handleDeleteConfirm = async () => {
+    setDeleteModal((prev) => ({ ...prev, isLoading: true }));
+
+    try {
+      const token = localStorage.getItem("token");
+      await api.get(`news/delete/${deleteModal.newsId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          accept: "text/plain",
+        },
+      });
+
+      setDeleteModal({
+        isOpen: false,
+        newsId: null,
+        newsTitle: "",
+        isLoading: false,
+      });
+
+      if (filteredNews.length === 1 && currentPage > 1) {
+        setCurrentPage((prev) => prev - 1);
+      } else {
+        setTimeout(() => {
+          fetchNews(currentPage, searchTerm);
+        }, 100);
+      }
+
+      toast.success(t("delete.messages.success"), {
+        position: "top-right",
+        autoClose: 2000,
+      });
+    } catch (error) {
+      console.error("Error deleting news:", error);
+      setDeleteModal((prev) => ({ ...prev, isLoading: false }));
+      toast.error(t("delete.messages.error"), {
+        position: "top-right",
+        autoClose: 4000,
+      });
     }
+  };
+
+  const handleDeleteCancel = () => {
+    setDeleteModal({
+      isOpen: false,
+      newsId: null,
+      newsTitle: "",
+      isLoading: false,
+    });
   };
 
   const handleNextPage = () => {
@@ -86,169 +176,124 @@ function News() {
     if (movePrevious) setCurrentPage((prev) => prev - 1);
   };
 
-  const handleNewsDeleted = (deletedNewsId: any) => {
-    // Remove deleted news from current list
-    setFilteredNews(prev => prev.filter(news => news?.id !== deletedNewsId));
-    
-    // If current page becomes empty and it's not the first page, go to previous page
-    if (filteredNews.length === 1 && currentPage > 1) {
-      setCurrentPage(prev => prev - 1);
-    } else {
-      // Refresh the current page to get updated data
-      setTimeout(() => {
-        fetchNews(currentPage, searchTerm);
-      }, 100);
-    }
-  };
-
-  // Generate page numbers for pagination
-  const getPageNumbers = () => {
-    const maxPagesToShow = 5; // Number of page buttons to show
-    const pages = [];
-    let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
-    let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
-
-    if (endPage - startPage + 1 < maxPagesToShow) {
-      startPage = Math.max(1, endPage - maxPagesToShow + 1);
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      pages.push(i);
-    }
-
-    return pages;
-  };
-
   return (
-    <div>
+    <div className="news-page-wrapper">
 
-      <div
-        className="heroSlider"
-        style={{
-          backgroundImage:
-            "url(https://portaltest.menofia.edu.eg/images/AboutUniversity.jpg)",
-          backgroundPosition: "top",
-          backgroundSize: "cover",
-        }}>
-        <div className="hero-image"></div>
-        <div className="hero-overlay"></div>
 
-        <div className="searchCard">
-          {isLoggedIn && (
-            <button
-              className="add-news-btn"
-              onClick={() => navigate("/news/add")}
-            >
-              Add New News
-            </button>
+      {/* Main Content - Figma Design */}
+      <section className="news-main-content" dir="rtl">
+        <div className="news-content-wrapper">
+          {/* Title Area */}
+          <div className="news-title-area">
+            <h2 className="news-page-title">أخبار جامعة المنوفية</h2>
+            <div className="news-title-underline"></div>
+          </div>
+
+          {/* Cards Grid */}
+          {filteredNews.length === 0 ? (
+            <div className="news-no-results">
+              <h2>{t("details.noResultsFound")}</h2>
+            </div>
+          ) : (
+            <div className="news-cards-grid">
+              {filteredNews.map((news) => (
+                <article key={news.id} className="news-card">
+                  <Link
+                    to={`/details/${news.id}`}
+                    state={{ news }}
+                    className="news-card-link"
+                  >
+                    {/* Image - Right Side (RTL) */}
+                    <div className="news-card-image">
+                      <SmartImage
+                        src={news?.newsImg}
+                        alt={news.newsDetails.head}
+                      />
+                    </div>
+
+                    {/* Text Content - Middle */}
+                    <div className="news-card-content">
+                      <h4 className="news-card-title">
+                        {news.newsDetails.head.slice(0, 100)}
+                        {news.newsDetails.head.length > 100 ? "..." : ""}
+                      </h4>
+                      <p className="news-card-description">
+                        {news.newsDetails.abbr.slice(0, 150)}
+                        {news.newsDetails.abbr.length > 150 ? "..." : ""}
+                      </p>
+                      <span className="news-card-date">
+                        {formatDate(news.date)}
+                      </span>
+                    </div>
+
+                    {/* Arrow Button - Left Side */}
+                    <div className="news-card-arrow">
+                      <i className="fa-solid fa-arrow-up"></i>
+                    </div>
+
+                    {/* Admin Actions */}
+                    {isLoggedIn && (
+                      <div className="news-admin-actions">
+                        <button
+                          className="news-admin-btn news-edit-btn"
+                          onClick={(e) => handleEditClick(e, news)}
+                          data-tip="Edit news"
+                        >
+                          <Edit size={16} />
+                        </button>
+                        <button
+                          className="news-admin-btn news-delete-btn"
+                          onClick={(e) => handleDeleteClick(e, news)}
+                          data-tip="Delete news"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
+                    )}
+                  </Link>
+                </article>
+              ))}
+            </div>
           )}
-          <div className="inputSerch">
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => {
-                setSearchTerm(e.target.value);
-                if (e.target.value.trim() === '') {
-                  fetchNews(1, '');
-                }
-              }}
-              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              placeholder={t("details.searchPlaceholder")}
-            />
-          </div>
-          <div onClick={handleSearch} className="btnSearch" style={pStyle}>
-            <button>
-              <i className="fa fa-search" aria-hidden="true"></i>
-              <span className="Btntext">{t("details.search")}</span>
-            </button>
-          </div>
-        </div>
-      </div>
 
-      <div className="news-page">
-        {filteredNews.length === 0 ? (
-          <div className="card-not-found">
-            <h2>{t("details.noResultsFound")}</h2>
-          </div>
-        ) : (
-          <SectionOne row="row" News={filteredNews} onNewsDeleted={handleNewsDeleted} />
-        )}
-      </div>
-      <div className="pagainationDown">
-        <div
-          className="pagination-controls"
-          style={{ direction: isArabic ? "rtl" : "ltr" }}>
-          <button
-            onClick={handlePreviousPage}
-            disabled={isLoading || !movePrevious}
-            className="pagination-btn">
-            <i
-              className={`fa-solid ${
-                isArabic ? "fa-chevron-right" : "fa-chevron-left"
-              }`}></i>
-          </button>
-
-          <div className="page-numbers">
-            {getPageNumbers().map((page) => (
+          {/* Pagination Controls */}
+          {filteredNews.length > 0 && (
+            <div className="news-pagination">
               <button
-                key={page}
-                onClick={() => handlePageChange(page)}
-                className={`pagination-btn ${
-                  page === currentPage ? "active" : ""
-                }`}
-                disabled={isLoading}>
-                {page}
+                className="news-pagination-arrow"
+                onClick={handlePreviousPage}
+                disabled={!movePrevious || isLoading}
+                aria-label="Previous page"
+              >
+                <i className="fa-solid fa-chevron-right"></i>
               </button>
-            ))}
-          </div>
-
-          <button
-            onClick={handleNextPage}
-            disabled={isLoading || !moveNext}
-            className="pagination-btn">
-            <i
-              className={`fa-solid ${
-                isArabic ? "fa-chevron-left" : "fa-chevron-right"
-              }`}></i>
-          </button>
+              <button
+                className="news-pagination-arrow"
+                onClick={handleNextPage}
+                disabled={!moveNext || isLoading}
+                aria-label="Next page"
+              >
+                <i className="fa-solid fa-chevron-left"></i>
+              </button>
+            </div>
+          )}
         </div>
+      </section>
 
-        <div className="pageSearch">
-           <p className="pages">{t("details.page")} : <span>{totalPages}</span></p>
-          <input
-            type="number"
-            className="inputPage"
-            value={inputPage}
-            onChange={(e) => setInputPage(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                const page = parseInt(inputPage);
-                if (page >= 1 && page <= totalPages) {
-                  setCurrentPage(page);
-                }
-              }
-            }}
-          />
-          <button
-            data-tip="Search By Page"
-            className="btnPage"
-            onClick={() => {
-              const page = parseInt(inputPage);
-              if (page >= 1 && page <= totalPages) {
-                setCurrentPage(page);
-              }
-            }}>
-            <i className="fa-solid fa-magnifying-glass-arrow-right"></i>
-          </button>
-          <ReactTooltip
-            place="top"
-            className="custom-tooltip"
-            type="dark"
-            effect="solid"
-          />
-        </div>
-      </div>
+      <ReactTooltip
+        place="top"
+        className="custom-tooltip"
+        type="dark"
+        effect="solid"
+      />
 
+      <DeleteConfirmModal
+        isOpen={deleteModal.isOpen}
+        onClose={handleDeleteCancel}
+        onConfirm={handleDeleteConfirm}
+        newsTitle={deleteModal.newsTitle}
+        isLoading={deleteModal.isLoading}
+      />
     </div>
   );
 }

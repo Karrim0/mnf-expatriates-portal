@@ -1,15 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
 ```
 Expatriates-master-main
@@ -46,6 +34,7 @@ Expatriates-master-main
 │  │  ├─ image-940x580 (4).jpg
 │  │  ├─ image.png
 │  │  ├─ image2.png
+│  │  ├─ logo.jpg
 │  │  ├─ MNF_logo.png
 │  │  ├─ Polygon 2.svg
 │  │  ├─ raes.jpg
@@ -68,6 +57,9 @@ Expatriates-master-main
 │  │  ├─ Carousel
 │  │  │  ├─ Carousel.css
 │  │  │  └─ Carousel.tsx
+│  │  ├─ CollegesPrograms
+│  │  │  ├─ CollegesPrograms.css
+│  │  │  └─ CollegesPrograms.tsx
 │  │  ├─ Footer
 │  │  │  ├─ Footer.css
 │  │  │  └─ Footer.tsx
@@ -91,14 +83,6 @@ Expatriates-master-main
 │  │  │  ├─ News.json
 │  │  │  ├─ NewsDetails.json
 │  │  │  └─ Programs.json
-│  │  ├─ AS
-│  │  │  ├─ College.json
-│  │  │  ├─ Contact.json
-│  │  │  ├─ Home.json
-│  │  │  ├─ Login.json
-│  │  │  ├─ News.json
-│  │  │  ├─ NewsDetails.json
-│  │  │  └─ Programs.json
 │  │  ├─ DE
 │  │  │  ├─ College.json
 │  │  │  ├─ Contact.json
@@ -115,55 +99,7 @@ Expatriates-master-main
 │  │  │  ├─ News.json
 │  │  │  ├─ NewsDetails.json
 │  │  │  └─ Programs.json
-│  │  ├─ FA
-│  │  │  ├─ College.json
-│  │  │  ├─ Contact.json
-│  │  │  ├─ Home.json
-│  │  │  ├─ Login.json
-│  │  │  ├─ News.json
-│  │  │  ├─ NewsDetails.json
-│  │  │  └─ Programs.json
-│  │  ├─ FR
-│  │  │  ├─ College.json
-│  │  │  ├─ Contact.json
-│  │  │  ├─ Home.json
-│  │  │  ├─ Login.json
-│  │  │  ├─ News.json
-│  │  │  ├─ NewsDetails.json
-│  │  │  └─ Programs.json
-│  │  ├─ IT
-│  │  │  ├─ College.json
-│  │  │  ├─ Contact.json
-│  │  │  ├─ Home.json
-│  │  │  ├─ Login.json
-│  │  │  ├─ News.json
-│  │  │  ├─ NewsDetails.json
-│  │  │  └─ Programs.json
-│  │  ├─ JA
-│  │  │  ├─ College.json
-│  │  │  ├─ Contact.json
-│  │  │  ├─ Home.json
-│  │  │  ├─ Login.json
-│  │  │  ├─ News.json
-│  │  │  ├─ NewsDetails.json
-│  │  │  └─ Programs.json
-│  │  ├─ RU
-│  │  │  ├─ College.json
-│  │  │  ├─ Contact.json
-│  │  │  ├─ Home.json
-│  │  │  ├─ Login.json
-│  │  │  ├─ News.json
-│  │  │  ├─ NewsDetails.json
-│  │  │  └─ Programs.json
-│  │  ├─ TR
-│  │  │  ├─ College.json
-│  │  │  ├─ Contact.json
-│  │  │  ├─ Home.json
-│  │  │  ├─ Login.json
-│  │  │  ├─ News.json
-│  │  │  ├─ NewsDetails.json
-│  │  │  └─ Programs.json
-│  │  └─ ZH
+│  │  └─ FR
 │  │     ├─ College.json
 │  │     ├─ Contact.json
 │  │     ├─ Home.json
@@ -194,10 +130,8 @@ Expatriates-master-main
 │  ├─ ProgramsPage
 │  │  ├─ Programs.css
 │  │  └─ Programs.tsx
-│  ├─ Services
-│  │  └─ api.js
-│  └─ TestPage
-│     └─ index.tsx
+│  └─ Services
+│     └─ api.js
 ├─ vercel.json
 ├─ vite.config.js
 └─ _Vercel.json

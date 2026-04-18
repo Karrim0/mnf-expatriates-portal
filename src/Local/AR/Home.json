@@ -1,9 +1,57 @@
 {
+  "nav": {
+    "home": "الرئيسية",
+    "about": "عن الجامعة",
+    "about.digitalIdentity": "الهوية الرقمية",
+    "about.presidentWord": "كلمة رئيس الجامعة",
+    "about.sectors": "القطاعات",
+    "about.units": "الوحدات والمراكز",
+    "about.departments": "الإدارات",
+    "about.sitemap": "خريطة الموقع",
+    "about.history": "تاريخ وحقائق",
+    "about.history.vision": "الرؤية",
+    "about.history.mission": "الرسالة",
+    "about.history.goals": "الأهداف",
+    "about.history.ranking": "ترتيب الجامعة",
+    "programs": "الكليات والبرامج",
+    "students": "الطلاب",
+    "students.platforms": "المنصات",
+    "students.admission": "قواعد القبول والتحويل",
+    "students.ethics": "الميثاق الأخلاقي",
+    "students.scholarships": "المنح الدراسية",
+    "students.fees": "الرسوم الدراسية",
+    "students.services": "خدمات",
+    "students.services.housing": "السكن الجامعي",
+    "students.services.transport": "النقل والمواصلات",
+    "expatriates": "الوافدين",
+    "expatriates.apply": "القبول والتقديم",
+    "expatriates.programs": "البرامج",
+    "expatriates.expenses": "المصروفات",
+    "expatriates.housing": "السكن والمعيشة",
+    "expatriates.residency": "الإقامة والتأشيرة",
+    "expatriates.studentLife": "الحياة الطلابية",
+    "staff": "هيئة التدريس والعاملون",
+    "systems": "الأنظمة الإلكترونية",
+    "news": "الأخبار",
+    "news.newsList": "الأخبار",
+    "news.archive": "أرشيف",
+    "news.media": "ميديا الجامعة",
+    "news.media.photos": "ألبوم الصور",
+    "news.media.videos": "فيديوهات",
+    "news.media.channel": "القناة الإعلامية",
+    "contact": "تواصل معنا"
+  },
+  "search": {
+    "placeholder": "ابحث..."
+  },
   "header": {
     "home": "الرئيسية",
-    "MNF Uni": "جامعه المنوفية",
-    "Colleges": "الكليات",
-    "Programs": "البرامج",
+    "MNF Uni": "عن الجامعة",
+    "Programs": "الكليات والبرامج",
+    "students": "الطلاب",
+    "expatriates": "الوافدين",
+    "team": "هيئة التدريس والعاملون",
+    "systems": "الأنظمة الالكترونية",
     "News": "الاخبار",
     "contact US": "تواصل معنا",
     "Arabic": "العربية",
@@ -65,7 +113,7 @@
     "noResultsFound": "لم يتم العثور على نتائج",
     "searchPlaceholder": "ابحث عن آخر الأخبار التي تهمك"
   },
-   "tooltip": {
-   "details": "اضغط لرؤية التفاصيل"
-  } 
+  "tooltip": {
+    "details": "اضغط لرؤية التفاصيل"
+  }
 }

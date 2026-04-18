@@ -1,9 +1,57 @@
 {
+  "nav": {
+    "home": "Home",
+    "about": "About University",
+    "about.digitalIdentity": "Digital Identity",
+    "about.presidentWord": "President's Message",
+    "about.sectors": "Sectors",
+    "about.units": "Units and Centers",
+    "about.departments": "Departments",
+    "about.sitemap": "Sitemap",
+    "about.history": "History & Facts",
+    "about.history.vision": "Vision",
+    "about.history.mission": "Mission",
+    "about.history.goals": "Goals",
+    "about.history.ranking": "University Ranking",
+    "programs": "Colleges & Programs",
+    "students": "Students",
+    "students.platforms": "Platforms",
+    "students.admission": "Admission & Transfer Rules",
+    "students.ethics": "Code of Ethics",
+    "students.scholarships": "Scholarships",
+    "students.fees": "Tuition Fees",
+    "students.services": "Services",
+    "students.services.housing": "University Housing",
+    "students.services.transport": "Transportation",
+    "expatriates": "International Students",
+    "expatriates.apply": "Admission & Application",
+    "expatriates.programs": "Programs",
+    "expatriates.expenses": "Expenses",
+    "expatriates.housing": "Housing & Living",
+    "expatriates.residency": "Residence & Visa",
+    "expatriates.studentLife": "Student Life",
+    "staff": "Faculty & Staff",
+    "systems": "Electronic Systems",
+    "news": "News",
+    "news.newsList": "News",
+    "news.archive": "Archive",
+    "news.media": "University Media",
+    "news.media.photos": "Photo Gallery",
+    "news.media.videos": "Videos",
+    "news.media.channel": "Media Channel",
+    "contact": "Contact Us"
+  },
+  "search": {
+    "placeholder": "Search..."
+  },
   "header": {
     "home": "Home",
     "MNF Uni": "MNF University",
-    "Colleges": "Colleges",
-    "Programs": "Programs",
+    "Programs": "Colleges & Programs",
+    "students": "Students",
+    "expatriates": "Expatriates",
+    "team": "Faculty Members & Staff",
+    "systems": "Electronic Systems",
     "News": "News",
     "contact US": "Contact Us",
     "Arabic": "Arabic",
@@ -65,7 +113,7 @@
     "search": "Search",
     "noResultsFound": "No results found"
   },
-    "tooltip": {
+  "tooltip": {
     "details": "Click to view details"
   }
 }

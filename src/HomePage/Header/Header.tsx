@@ -1,194 +1,389 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
-import logo from "../../assets/image.png";
-import api from "../../Services/api";
+import logo from "../../assets/logo.jpg";
 import { useTranslation } from "react-i18next";
-import { Search as SearchIcon } from "lucide-react";
+import {
+  Search as SearchIcon,
+  Globe,
+  ChevronDown,
+  ChevronLeft,
+} from "lucide-react";
 
+// ─────────────────────────────────────────────
+// FIXED LANGUAGES - 4 only
+// ─────────────────────────────────────────────
+const FIXED_LANGUAGES = [
+  { code: "ar", name: "عربي", id: 1, flag: "https://flagcdn.com/w40/eg.png" },
+  { code: "en", name: "English", id: 2, flag: "https://flagcdn.com/w40/gb.png" },
+  { code: "fr", name: "Français", id: 3, flag: "https://flagcdn.com/w40/fr.png" },
+  { code: "de", name: "Deutsch", id: 4, flag: "https://flagcdn.com/w40/de.png" },
+];
 
-const Header = (props) => {
+// ─────────────────────────────────────────────
+// NAV DATA FUNCTION - Returns translated items
+// ─────────────────────────────────────────────
+const getNavItems = (t: any) => [
+  { key: "home", label: t("nav.home"), link: "/" },
+  {
+    key: "about",
+    label: t("nav.about"),
+    children: [
+      { key: "digital-identity", label: t("nav.about.digitalIdentity"), link: "/" },
+      { key: "president-word", label: t("nav.about.presidentWord"), link: "/" },
+      { key: "sectors", label: t("nav.about.sectors"), link: "/" },
+      { key: "units", label: t("nav.about.units"), link: "/" },
+      { key: "departments", label: t("nav.about.departments"), link: "/" },
+      { key: "sitemap", label: t("nav.about.sitemap"), link: "/" },
+      {
+        key: "history",
+        label: t("nav.about.history"),
+        children: [
+          { key: "vision", label: t("nav.about.history.vision"), link: "/" },
+          { key: "mission", label: t("nav.about.history.mission"), link: "/" },
+          { key: "goals", label: t("nav.about.history.goals"), link: "/" },
+          { key: "ranking", label: t("nav.about.history.ranking"), link: "/" },
+        ],
+      },
+    ],
+  },
+  { key: "programs", label: t("nav.programs"), link: "/programs" },
+  {
+    key: "students",
+    label: t("nav.students"),
+    children: [
+      { key: "platforms", label: t("nav.students.platforms"), link: "/" },
+      { key: "admission", label: t("nav.students.admission"), link: "/" },
+      { key: "ethics", label: t("nav.students.ethics"), link: "/" },
+      { key: "scholarships", label: t("nav.students.scholarships"), link: "/" },
+      { key: "fees", label: t("nav.students.fees"), link: "/" },
+      {
+        key: "services",
+        label: t("nav.students.services"),
+        children: [
+          { key: "housing", label: t("nav.students.services.housing"), link: "/" },
+          { key: "transport", label: t("nav.students.services.transport"), link: "/" },
+        ],
+      },
+    ],
+  },
+  {
+    key: "expatriates",
+    label: t("nav.expatriates"),
+    children: [
+      { key: "apply", label: t("nav.expatriates.apply"), link: "/" },
+      { key: "exp-programs", label: t("nav.expatriates.programs"), link: "/" },
+      { key: "expenses", label: t("nav.expatriates.expenses"), link: "/" },
+      { key: "housing", label: t("nav.expatriates.housing"), link: "/" },
+      { key: "residency", label: t("nav.expatriates.residency"), link: "/" },
+      { key: "student-life", label: t("nav.expatriates.studentLife"), link: "/" },
+    ],
+  },
+  { key: "staff", label: t("nav.staff"), link: "/team" },
+  { key: "systems", label: t("nav.systems"), link: "/systems" },
+  {
+    key: "news",
+    label: t("nav.news"),
+    children: [
+      { key: "news-list", label: t("nav.news.newsList"), link: "/news" },
+      { key: "archive", label: t("nav.news.archive"), link: "/" },
+      {
+        key: "media",
+        label: t("nav.news.media"),
+        children: [
+          { key: "photos", label: t("nav.news.media.photos"), link: "/" },
+          { key: "videos", label: t("nav.news.media.videos"), link: "/" },
+          { key: "channel", label: t("nav.news.media.channel"), link: "/" },
+        ],
+      },
+    ],
+  },
+  { key: "contact", label: t("nav.contact"), link: "/contactUs" },
+];
+
+// ─────────────────────────────────────────────
+// SUB-DROPDOWN ITEM (Level 2)
+// ─────────────────────────────────────────────
+const SubDropdownItem = ({ item }: any) => {
+  const [open, setOpen] = useState(false);
+  const hasChildren = item.children?.length > 0;
+  const ref = useRef<HTMLDivElement | null>(null);
+  const subDropdownRef = useRef<HTMLDivElement | null>(null);
+
+  const handleToggle = (e: React.MouseEvent) => {
+    if (hasChildren) {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen((prev) => !prev);
+    }
+  };
+
+  useEffect(() => {
+    if (open && subDropdownRef.current) {
+      const subDropdown = subDropdownRef.current;
+      const rect = subDropdown.getBoundingClientRect();
+
+      if (rect.left < 0) {
+        subDropdown.style.insetInlineStart = "100%";
+        subDropdown.style.insetInlineEnd = "auto";
+      } else if (rect.right > window.innerWidth) {
+        subDropdown.style.insetInlineStart = "auto";
+        subDropdown.style.insetInlineEnd = "100%";
+      }
+    }
+  }, [open]);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [open]);
+
+  return (
+    <div
+      className={`dropdown-item ${hasChildren ? "has-sub" : ""} ${open ? "sub-open" : ""}`}
+      ref={ref}
+    >
+      {hasChildren ? (
+        <span className="dropdown-item-label" onClick={handleToggle}>
+          <span className="dropdown-item-text">{item.label}</span>
+          <ChevronLeft size={12} className="sub-arrow" />
+        </span>
+      ) : (
+        <Link to={item.link} className="dropdown-item-label solo">
+          <span className="dropdown-item-text">{item.label}</span>
+        </Link>
+      )}
+
+      {hasChildren && open && (
+        <div className="sub-dropdown" ref={subDropdownRef}>
+          {item.children.map((child: any) => (
+            <Link key={child.key} to={child.link} className="dropdown-item-label solo">
+              <span className="dropdown-item-text">{child.label}</span>
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ─────────────────────────────────────────────
+// NAV ITEM (Level 1)
+// ─────────────────────────────────────────────
+const NavItem = ({ item, isActive }: any) => {
+  const [open, setOpen] = useState(false);
+  const hasChildren = item.children?.length > 0;
+  const ref = useRef<HTMLLIElement | null>(null);
+
+  const handleToggle = (e: React.MouseEvent) => {
+    if (hasChildren) {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen((prev) => !prev);
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [open]);
+
+  return (
+    <li
+      className={`nav-item ${isActive ? "active" : ""} ${hasChildren ? "has-dropdown" : ""} ${open ? "dropdown-open" : ""}`}
+      ref={ref}
+    >
+      {hasChildren ? (
+        <span className="nav-link" onClick={handleToggle}>
+          <span className="nav-link-text">{item.label}</span>
+          <ChevronDown size={11} className="nav-arrow" />
+        </span>
+      ) : (
+        <Link to={item.link} className="nav-link">
+          <span className="nav-link-text">{item.label}</span>
+        </Link>
+      )}
+
+      {hasChildren && open && (
+        <div className="dropdown-menu">
+          {item.children.map((child: any) => (
+            <SubDropdownItem key={child.key} item={child} />
+          ))}
+        </div>
+      )}
+    </li>
+  );
+};
+
+// ─────────────────────────────────────────────
+// MAIN HEADER
+// ─────────────────────────────────────────────
+const Header = () => {
   const { i18n, t } = useTranslation();
   const location = useLocation();
-  const navigate = useNavigate();
-
   const savedLang = JSON.parse(
-    localStorage.getItem("lang") || '{"code": "en", "id": 2}'
+    localStorage.getItem("lang") || '{"code": "ar", "id": 1}'
   );
-  const [langActive, setLangActive] = useState(false);
+
   const [menuActive, setMenuActive] = useState(false);
-  const [language, setLanguage] = useState(savedLang.code);
-  const inputRef = useRef(null);
-
-  const [showInput, setShowInput] = useState(false);
+  const [langActive, setLangActive] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [results, setResults] = useState([4, 4]);
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    Boolean(localStorage.getItem("token"))
-  );
-  const [userMenuActive, setUserMenuActive] = useState(false);
+  const searchRef = useRef<HTMLDivElement | null>(null);
 
-  const ARstyle = { fontFamily: "var(--MNF_Body_AR)", fontSize: "14px" };
-  const ENstyle = { fontFamily: "var(--MNF_Body_EN)" };
-  const closeStyle =
-    savedLang.code === "ar" ? { right: "170px" } : { left: "170px" };
+  const NAV_ITEMS = getNavItems(t);
 
-  interface Language {
-    id: number;
-    code: string;
-    name: string;
-    flag: string;
-  }
-
-  const [languages, setLanguages] = useState<Language[]>([]);
-
-  const navLinks = [
-    { name: t("header.home"), link: "/" },
-    { name: t("header.MNF Uni"), link: "https://www.menofia.edu.eg/Home/ar" },
-    { name: t("header.Colleges"), link: "/collage" },
-    { name: t("header.Programs"), link: "/programs" },
-    { name: t("header.News"), link: "/news" },
-    { name: t("header.contact US"), link: "/contactUs" },
-  ];
-
-  const changeAllLanguage = (lng) => {
+  const changeAllLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
     document.documentElement.dir = lng === "ar" ? "rtl" : "ltr";
   };
 
-  const changeLanguage = (lang) => {
-    setLanguage(lang.code);
+  const changeLanguage = (lang: any) => {
     localStorage.setItem("lang", JSON.stringify(lang));
     changeAllLanguage(lang.code);
-    window.location.reload(); 
+    window.location.reload();
   };
-
-  const toggleLangDropdown = () => setLangActive((prev) => !prev);
-  const toggleMenu = () => setMenuActive((prev) => !prev);
-  const toggleUserMenu = () => setUserMenuActive((prev) => !prev);
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    setUserMenuActive(false);
-    navigate("/");
-  };
-
-  useEffect(() => {
-    const langObj = languages.find((l) => l.code === language);
-    if (langObj) {
-      changeAllLanguage(langObj.code);
-    }
-  }, [language]);
-
-  const fetchLanguages = async () => {
-    try {
-      const response = await api.get("/languages");
-      if (response?.data?.success) {
-        setLanguages(response.data.result as Language[]);
-      }
-    } catch (error) {
-      console.error("Error fetching languages:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchLanguages();
-  }, []);
 
   useEffect(() => {
     changeAllLanguage(savedLang.code);
   }, []);
 
   useEffect(() => {
-    const handleStorage = () => {
-      setIsLoggedIn(Boolean(localStorage.getItem("token")));
+    const handleOutside = (e: MouseEvent) => {
+      if (
+        searchOpen &&
+        searchRef.current &&
+        !searchRef.current.contains(e.target as Node)
+      ) {
+        setSearchOpen(false);
+        setSearchTerm("");
+      }
+
+      const target = e.target as HTMLElement;
+      if (langActive && !target.closest(".lang-wrapper")) {
+        setLangActive(false);
+      }
     };
-    window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
-  }, []);
+
+    document.addEventListener("mousedown", handleOutside);
+    return () => document.removeEventListener("mousedown", handleOutside);
+  }, [searchOpen, langActive]);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      console.log("Searching for:", searchTerm);
+    }
+  };
 
   return (
     <header className="nav-container">
-       <Link
-                to='/'
-                className="nav-logo">
-        <img src={logo} alt="International Students Affairs office Logo" />
-              </Link>
+      <Link to="/" className="nav-logo">
+        <img src={logo} alt="Logo" />
+      </Link>
 
-      <nav
-        className={`${menuActive ? "nav-links nav-active" : "nav-links"} ${
-          savedLang.code === "ar" ? "nav-linksar" : "nav-linksen"
-        }`}>
-        <i
-          className="fa-solid fa-times close"
-          onClick={toggleMenu}
-          style={closeStyle}></i>
+      <nav className={`nav-links ${menuActive ? "nav-active" : ""}`}>
+        <button
+          className="nav-close"
+          onClick={() => setMenuActive(false)}
+          aria-label="close menu"
+        >
+          <i className="fa-solid fa-times" />
+        </button>
+
         <ul>
-          {navLinks.map((link, index) => (
-            <li key={index} className={location.pathname === link.link ? "active" : ""}>
-              <Link
-                to={link.link}
-                style={savedLang.code === "ar" ? ARstyle : ENstyle}>
-                {link.name}
-              </Link>
-            </li>
+          {NAV_ITEMS.map((item) => (
+            <NavItem
+              key={item.key}
+              item={item}
+              isActive={item.link && location.pathname === item.link}
+            />
           ))}
         </ul>
       </nav>
 
       <div className="nav-icons">
-        <div className="nav-lang-container" onClick={toggleLangDropdown}>
-          <i className="fa-solid fa-globe"></i>
-          <span>{language}</span>
-          <div
-            className={
-              langActive ? "lang-dropdown lang-active" : "lang-dropdown"
-            }>
-            {languages.map((lang) => (
+        <div className="lang-wrapper" onClick={() => setLangActive((p) => !p)}>
+          <Globe size={20} />
+          <span className="lang-code">{savedLang.code.toUpperCase()}</span>
+          <ChevronDown
+            size={14}
+            className={`lang-arrow ${langActive ? "rotated" : ""}`}
+          />
+
+          <div className={`lang-dropdown ${langActive ? "open" : ""}`}>
+            {FIXED_LANGUAGES.map((lang) => (
               <div
                 key={lang.code}
-                className="flagStyle"
-                style={savedLang.code === lang.code ? ARstyle : ENstyle}
-                onClick={() => changeLanguage(lang)}>
-                <img
-                    src={lang.flag}
-                    alt="Flag"
-                  width="20"
-                  height="20"
-                />
-                <span className="textLang"> {lang.name}</span>
+                className={`lang-option ${savedLang.code === lang.code ? "current" : ""}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  changeLanguage(lang);
+                }}
+              >
+                <img src={lang.flag} alt={lang.name} width={20} height={20} />
+                <span>{lang.name}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="nav-auth-container">
-          {!isLoggedIn ? (
-            <button
-              className="login-btn"
-              onClick={() => navigate("/login")}
-            >
-              {t("header.login", "Login")}
-            </button>
-          ) : (
-            <div className="user-wrapper" onClick={toggleUserMenu}>
-              <i className="fa-solid fa-user"></i>
-              <div
-                className={
-                  userMenuActive
-                    ? "user-dropdown user-active"
-                    : "user-dropdown"
-                }>
-      
-                <span onClick={handleLogout}>{t("header.logout", "Logout")}</span>
-              </div>
-            </div>
+        <div className="search-wrapper" ref={searchRef}>
+          <button
+            className="icon-btn search-btn"
+            onClick={() => setSearchOpen((p) => !p)}
+            aria-label="search"
+          >
+            <SearchIcon size={20} />
+          </button>
+
+          {searchOpen && (
+            <form onSubmit={handleSearch} className="search-dropdown">
+              <input
+                type="text"
+                className="search-input-pro"
+                placeholder={t("search.placeholder")}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                autoFocus
+              />
+              <button
+                type="submit"
+                className="search-submit-btn"
+                aria-label="submit search"
+              >
+                <SearchIcon size={18} />
+              </button>
+            </form>
           )}
         </div>
 
-        <i className="fa-solid fa-bars menu" onClick={toggleMenu}></i>
+        <button
+          className="icon-btn menu-btn"
+          onClick={() => setMenuActive(true)}
+          aria-label="open menu"
+        >
+          <i className="fa-solid fa-bars" />
+        </button>
       </div>
+
+      {menuActive && <div className="nav-overlay" onClick={() => setMenuActive(false)} />}
     </header>
   );
 };

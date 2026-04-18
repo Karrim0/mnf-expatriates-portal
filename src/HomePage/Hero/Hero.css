@@ -1,200 +1,797 @@
-.carousel-container {
-    padding: 16px;
-    margin: 0 48px;
-    position: relative;
+/* ========================================
+   Hero Carousel Component - Final Fixed Version
+   Design: 1792px × 700px
+======================================== */
+
+:root {
+  --hero-orange: #f66b15;
+  --hero-orange-hover: #e55d0f;
+  --hero-white: #ffffff;
+  --hero-black: #000000;
 }
 
-.carousel {
-    position: relative;
-    height: 700px;
-    overflow: hidden;
-    border-radius: 1rem;
-    direction: ltr !important;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
+/* ========================================
+   Main Wrapper Container
+======================================== */
+
+.hero-carousel-wrapper {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.carousel-track {
-    position: absolute;
-    inset: 0;
-    transition: transform 500ms ease-in-out;
-    display: flex;
-    height: 100%;
+/* ========================================
+   Carousel Main Container
+======================================== */
+
+.hero-carousel-main {
+  position: relative;
+  width: 100%;
+  max-width: 1792px;
+  height: 700px;
+  overflow: hidden;
+  border-radius: 24px;
+  direction: ltr !important;
+  margin: 0 48px;
 }
 
-.carousel-slide {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    flex: 1 0 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+/* ========================================
+   Carousel Track (Slides Container)
+======================================== */
+
+.hero-carousel-track {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.8s ease-in-out;
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
-.carousel-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+/* ========================================
+   Individual Slide
+======================================== */
+
+.hero-carousel-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.carousel-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgb(0 0 0 / 83%))
+/* ========================================
+   Background Image
+======================================== */
+
+.hero-carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
-.carousel-heading {
-    color: white;
-    z-index: 10;
-    width: 500px;
-    font-size: 40px;
-    width: 100%;
-    line-height: 1.4;
+/* ========================================
+   Gradient Overlay
+   180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.83) 100%
+======================================== */
+
+.hero-carousel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.83) 100%
+  );
+  z-index: 1;
 }
-.cardSection{
-    background-color: #d9d9d94f;
-    padding: 20px;
-    position: absolute;
-    width: 800px;
-    bottom: 60px;
-    inset-inline-start: 50px;
-    border-radius: 10px;
-    height: fit-content;
+
+/* ========================================
+   Content Card
+======================================== */
+
+.hero-content-card {
+  background-color: rgba(217, 217, 217, 0.31);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  min-height: 180px;
+  height: auto;
+  max-height: 450px;
+  padding: 32px 40px;
+  position: absolute;
+  width: 750px;
+  max-width: 750px;
+  border-radius: 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  bottom: 50px;
+  overflow: hidden;
 }
-.custom-tooltip {
+
+/* RTL positioning */
+.hero-content-card[style*="rtl"] {
+  right: 80px;
+  left: auto;
+}
+
+/* LTR positioning */
+.hero-content-card[style*="ltr"] {
+  left: 80px;
+  right: auto;
+}
+
+/* ========================================
+   Main Heading
+======================================== */
+
+.hero-main-heading {
+  color: #ffffff !important;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+  width: 100%;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ========================================
+   Arrow Link Wrapper
+======================================== */
+
+.hero-arrow-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.hero-arrow-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background-color: var(--hero-white);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.hero-arrow-link svg {
+  transition: all 0.3s ease;
+  width: 24px;
+  height: 24px;
+}
+
+.hero-arrow-link:hover {
+  background-color: var(--hero-orange);
+  transform: scale(1.05);
+}
+
+.hero-arrow-link:hover svg {
+  fill: var(--hero-white) !important;
+  transform: translate(4px, -4px);
+}
+
+/* ========================================
+   Pagination Dots
+======================================== */
+
+.hero-pagination-dots {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 3;
+}
+
+.hero-pagination-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-pagination-dot:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.hero-pagination-dot:focus {
+  outline: 2px solid var(--hero-orange);
+  outline-offset: 2px;
+}
+
+.hero-pagination-dot-active {
+  width: 32px;
+  background-color: var(--hero-white);
+  border-radius: 6px;
+}
+
+/* ========================================
+   Tooltip
+======================================== */
+
+.hero-custom-tooltip {
   white-space: nowrap !important;
 }
 
-.carousel-dots {
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0.5rem;
-    z-index: 10;
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+/* Large Desktop (1920px+) */
+@media (min-width: 1920px) {
+  .hero-carousel-main {
+    height: 700px;
+  }
+
+  .hero-content-card {
+    width: 800px;
+    max-width: 800px;
+    padding: 36px 44px;
+    bottom: 60px;
+  }
+
+  .hero-main-heading {
+    font-size: 34px;
+  }
+
+  .hero-arrow-link {
+    width: 68px;
+    height: 68px;
+  }
 }
 
-.carousel-dot {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 9999px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: all 300ms ease;
+/* Desktop (1600px - 1919px) */
+@media (max-width: 1919px) {
+  .hero-carousel-main {
+    height: 700px;
+  }
+
+  .hero-content-card {
+    width: 750px;
+    max-width: 750px;
+    bottom: 50px;
+  }
 }
 
-.carousel-dot.active {
-    width: 1rem;
-    background-color: white;
-}
-.linkArrow{
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-@media (max-width: 1024px) {
-    .carousel-heading {
-        width: 600px;
-        font-size: 45px;
-    }
-}
+/* Desktop (1440px - 1599px) */
+@media (max-width: 1599px) {
+  .hero-carousel-main {
+    height: 650px;
+  }
 
-@media (max-width: 930px) {
-    .carousel-container {
-        margin: 0 36px;
-        padding: 14px;
-    }
-    .cardSection{
-        
-        width: 600px;
-    }
-}
+  .hero-content-card {
+    width: 700px;
+    max-width: 700px;
+    padding: 30px 36px;
+    bottom: 45px;
+  }
 
-@media (max-width: 880px) {
-    .carousel-heading {
-        width: 100%;
-        font-size: 40px;
-    }
+  .hero-content-card[style*="rtl"] {
+    right: 70px;
+  }
 
-    .carousel {
-        height: 600px;
-    }
-        .carousel-heading {
-        width: 100%;
-        font-size: 32px;
-        font-weight: 500;
-    }
+  .hero-content-card[style*="ltr"] {
+    left: 70px;
+  }
 
+  .hero-main-heading {
+    font-size: 30px;
+    -webkit-line-clamp: 4;
+  }
+
+  .hero-arrow-link {
+    width: 60px;
+    height: 60px;
+  }
 }
 
-@media (max-width: 768px) {
-    .carousel-container {
-        padding: 8px;
-        margin: 0 24px;
-    }
+/* Laptop Large (1200px - 1439px) */
+@media (max-width: 1439px) {
+  .hero-carousel-main {
+    height: 600px;
+  }
 
-    .carousel-heading {
-        width: 100%;
-        font-size: 28px;
-    }
+  .hero-content-card {
+    width: 650px;
+    max-width: 650px;
+    padding: 28px 32px;
+    bottom: 40px;
+  }
 
-    .carousel {
-        height: 550px;
-    }
- .cardSection{
-        
-        width: 500px;
-    }
+  .hero-content-card[style*="rtl"] {
+    right: 60px;
+  }
+
+  .hero-content-card[style*="ltr"] {
+    left: 60px;
+  }
+
+  .hero-main-heading {
+    font-size: 28px;
+  }
+
+  .hero-arrow-link {
+    width: 58px;
+    height: 58px;
+  }
 }
 
-@media (max-width: 660px) {
-    .carousel-heading {
-        width: 100%;
-        font-size: 30px;
-    }
+/* Laptop (1024px - 1199px) */
+@media (max-width: 1199px) {
+  .hero-carousel-main {
+    height: 550px;
+    border-radius: 20px;
+    margin: 0 36px;
+  }
 
-    .carousel {
-        height: 500px;
-    }
+  .hero-content-card {
+    width: 580px;
+    max-width: 580px;
+    min-height: 160px;
+    padding: 26px 30px;
+    gap: 18px;
+    bottom: 35px;
+  }
+
+  .hero-content-card[style*="rtl"] {
+    right: 50px;
+  }
+
+  .hero-content-card[style*="ltr"] {
+    left: 50px;
+  }
+
+  .hero-main-heading {
+    font-size: 26px;
+    -webkit-line-clamp: 4;
+  }
+
+  .hero-arrow-link {
+    width: 56px;
+    height: 56px;
+  }
+
+  .hero-arrow-link svg {
+    width: 22px;
+    height: 22px;
+  }
 }
 
-@media (max-width: 550px) {
-    .carousel-heading {
-        font-size: 22px;
-                width: 100%;
+/* Tablet Large (900px - 1023px) */
+@media (max-width: 1023px) {
+  .hero-carousel-main {
+    height: 500px;
+  }
 
-    }
-    .cardSection{
-        top: 23%;
-        width: 70%;
-    }
-    .carousel {
-        height: 400px;
-    }
+  .hero-content-card {
+    width: 520px;
+    max-width: 520px;
+    min-height: 150px;
+    padding: 24px 28px;
+    gap: 16px;
+    bottom: 30px;
+  }
+
+  .hero-content-card[style*="rtl"] {
+    right: 45px;
+  }
+
+  .hero-content-card[style*="ltr"] {
+    left: 45px;
+  }
+
+  .hero-main-heading {
+    font-size: 24px;
+    -webkit-line-clamp: 3;
+  }
+
+  .hero-arrow-link {
+    width: 52px;
+    height: 52px;
+  }
 }
 
+/* Tablet (768px - 899px) */
+@media (max-width: 899px) {
+  .hero-carousel-main {
+    height: 480px;
+    border-radius: 16px;
+    margin: 0 28px;
+  }
 
-@media (max-width: 430px) {
-    .carousel-container {
-        padding: 4px;
-        margin: 0 12px;
-    }
+  .hero-content-card {
+    width: 460px;
+    max-width: 460px;
+    min-height: 140px;
+    padding: 22px 26px;
+    gap: 14px;
+    bottom: 28px;
+  }
 
-    .carousel {
-        height: 350px;
-    }
+  .hero-content-card[style*="rtl"] {
+    right: 40px;
+  }
 
-    .carousel-heading {
-        font-size: 17px;
-        flex-wrap: wrap;
-        width: 100%;
+  .hero-content-card[style*="ltr"] {
+    left: 40px;
+  }
 
-    }
+  .hero-main-heading {
+    font-size: 22px;
+    -webkit-line-clamp: 3;
+  }
+
+  .hero-arrow-link {
+    width: 50px;
+    height: 50px;
+  }
+
+  .hero-arrow-link svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .hero-pagination-dots {
+    bottom: 26px;
+    gap: 10px;
+  }
+
+  .hero-pagination-dot {
+    width: 11px;
+    height: 11px;
+  }
+
+  .hero-pagination-dot-active {
+    width: 30px;
+  }
+}
+
+/* Tablet Small (640px - 767px) */
+@media (max-width: 767px) {
+  .hero-carousel-main {
+    height: 420px;
+    margin: 0 24px;
+  }
+
+  .hero-content-card {
+    width: calc(100% - 80px);
+    max-width: 420px;
+    min-height: 130px;
+    padding: 20px 24px;
+    gap: 12px;
+    bottom: 25px;
+  }
+
+  .hero-content-card[style*="rtl"] {
+    right: 35px;
+    left: 35px;
+  }
+
+  .hero-content-card[style*="ltr"] {
+    left: 35px;
+    right: 35px;
+  }
+
+  .hero-main-heading {
+    font-size: 20px;
+    -webkit-line-clamp: 3;
+  }
+
+  .hero-arrow-link {
+    width: 48px;
+    height: 48px;
+  }
+
+  .hero-pagination-dots {
+    bottom: 24px;
+  }
+
+  .hero-pagination-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .hero-pagination-dot-active {
+    width: 28px;
+  }
+}
+
+/* Mobile Large (550px - 639px) */
+@media (max-width: 639px) {
+  .hero-carousel-main {
+    height: 380px;
+  }
+
+  .hero-content-card {
+    width: calc(100% - 60px);
+    max-width: 100%;
+    min-height: 120px;
+    padding: 18px 22px;
+    gap: 12px;
+    bottom: 22px;
+  }
+
+  .hero-content-card[style*="rtl"] {
+    right: 30px;
+    left: 30px;
+  }
+
+  .hero-content-card[style*="ltr"] {
+    left: 30px;
+    right: 30px;
+  }
+
+  .hero-main-heading {
+    font-size: 19px;
+    -webkit-line-clamp: 3;
+  }
+
+  .hero-arrow-link {
+    width: 46px;
+    height: 46px;
+  }
+
+  .hero-arrow-link svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+
+/* Mobile Medium (480px - 549px) */
+@media (max-width: 549px) {
+  .hero-carousel-main {
+    height: 360px;
+    border-radius: 12px;
+    margin: 0 20px;
+  }
+
+  .hero-content-card {
+    width: calc(100% - 50px);
+    min-height: 110px;
+    padding: 16px 20px;
+    gap: 10px;
+    bottom: 20px;
+  }
+
+  .hero-content-card[style*="rtl"] {
+    right: 25px;
+    left: 25px;
+  }
+
+  .hero-content-card[style*="ltr"] {
+    left: 25px;
+    right: 25px;
+  }
+
+  .hero-main-heading {
+    font-size: 18px;
+    -webkit-line-clamp: 3;
+  }
+
+  .hero-arrow-link {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero-arrow-link svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hero-pagination-dots {
+    bottom: 20px;
+    gap: 8px;
+  }
+
+  .hero-pagination-dot {
+    width: 9px;
+    height: 9px;
+  }
+
+  .hero-pagination-dot-active {
+    width: 26px;
+  }
+}
+
+/* Mobile Small (400px - 479px) */
+@media (max-width: 479px) {
+  .hero-carousel-main {
+    height: 340px;
+    margin: 0 16px;
+  }
+
+  .hero-content-card {
+    width: calc(100% - 40px);
+    min-height: 105px;
+    padding: 15px 18px;
+    gap: 10px;
+    bottom: 18px;
+    border-radius: 16px;
+  }
+
+  .hero-content-card[style*="rtl"] {
+    right: 20px;
+    left: 20px;
+  }
+
+  .hero-content-card[style*="ltr"] {
+    left: 20px;
+    right: 20px;
+  }
+
+  .hero-main-heading {
+    font-size: 17px;
+    -webkit-line-clamp: 3;
+  }
+
+  .hero-arrow-link {
+    width: 42px;
+    height: 42px;
+  }
+
+  .hero-arrow-link svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .hero-pagination-dots {
+    bottom: 18px;
+  }
+
+  .hero-pagination-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .hero-pagination-dot-active {
+    width: 24px;
+  }
+}
+
+/* Mobile Extra Small (360px - 399px) */
+@media (max-width: 399px) {
+  .hero-carousel-main {
+    height: 320px;
+    margin: 0 12px;
+  }
+
+  .hero-content-card {
+    width: calc(100% - 32px);
+    min-height: 100px;
+    padding: 14px 16px;
+    gap: 8px;
+    bottom: 16px;
+  }
+
+  .hero-content-card[style*="rtl"] {
+    right: 16px;
+    left: 16px;
+  }
+
+  .hero-content-card[style*="ltr"] {
+    left: 16px;
+    right: 16px;
+  }
+
+  .hero-main-heading {
+    font-size: 16px;
+    -webkit-line-clamp: 2;
+    line-height: 1.35;
+  }
+
+  .hero-arrow-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-arrow-link svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Mobile Tiny (< 360px) */
+@media (max-width: 359px) {
+  .hero-carousel-main {
+    height: 300px;
+  }
+
+  .hero-content-card {
+    width: calc(100% - 24px);
+    min-height: 95px;
+    padding: 12px 14px;
+    bottom: 14px;
+  }
+
+  .hero-content-card[style*="rtl"] {
+    right: 12px;
+    left: 12px;
+  }
+
+  .hero-content-card[style*="ltr"] {
+    left: 12px;
+    right: 12px;
+  }
+
+  .hero-main-heading {
+    font-size: 15px;
+    -webkit-line-clamp: 2;
+  }
+
+  .hero-arrow-link {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero-arrow-link svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+.hero-pagination-dot {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+.hero-carousel-main {
+  touch-action: pan-y pinch-zoom;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-carousel-track {
+    transition: none;
+  }
+
+  .hero-pagination-dot,
+  .hero-arrow-link {
+    transition: none;
+  }
+}
+
+/* High contrast */
+@media (prefers-contrast: high) {
+  .hero-carousel-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.95) 100%
+    );
+  }
+
+  .hero-content-card {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--hero-white);
+  }
 }
